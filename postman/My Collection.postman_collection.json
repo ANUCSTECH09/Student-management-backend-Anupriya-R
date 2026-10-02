@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "de6a5331-c824-45ea-95a9-5d73c4f2a8d6",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58677408",
+    "_collection_link": "https://go.postman.co/collection/58677408-de6a5331-c824-45ea-95a9-5d73c4f2a8d6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "postman-echo.com/get",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "get"
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Post data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {\n    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\n});\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"args\": {},\n    \"data\": {\n        \"registerNo\": \"\",\n        \"name\": \"\",\n        \"email\": \"abc\",\n        \"phone\": \"123\",\n        \"department\": \"CSE\",\n        \"year\": 9,\n        \"semester\": 4\n    },\n    \"files\": {},\n    \"form\": {},\n    \"headers\": {\n        \"host\": \"postman-echo.com\",\n        \"user-agent\": \"PostmanRuntime/2.10.1\",\n        \"accept\": \"*/*\",\n        \"accept-encoding\": \"gzip\",\n        \"x-forwarded-proto\": \"https\",\n        \"content-length\": \"125\",\n        \"cache-control\": \"no-cache\",\n        \"postman-token\": \"e667f96c-2a3f-40cf-a24b-39cae2d51b8d\",\n        \"content-type\": \"application/json\",\n        \"cookie\": \"__cf_bm=5KAiKWKFjgp_gREbpR0vAIqJYN7sFPpKNYnScjyaiEs-1790933786.114191-1.0.1.1-yWNHC_9ESByzJqwaBdweGN7fvnM2nJcDkVIQ_O2oWUS.pJEz.tA9WJ1E6X3vZ6uiDDXt_NUVBEVFKbhNoRnU036y06z2nWE7FqRGwvFcEQSDO8qNyoxWiQx_4GSmXnDj; sails.sid=s%3AdEz-7Q0H7GZlna0OJxwty_wNrrlfJiPj.GIssgydUn%2F7%2FYQ3Ys3%2Fu4hMpAmsFX27aiHE5y9YcJ8M\"\n    },\n    \"json\": {\n        \"registerNo\": \"\",\n        \"name\": \"\",\n        \"email\": \"abc\",\n        \"phone\": \"123\",\n        \"department\": \"CSE\",\n        \"year\": 9,\n        \"semester\": 4\n    },\n    \"url\": \"https://postman-echo.com/post\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "postman-echo.com/post",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/api/students",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\r\n{\r\n  \"registerNo\": \"111425149003\",\r\n  \"name\": \"Anupriya R\",\r\n  \"email\": \"anupriya@example.com\",\r\n  \"phone\": \"9876543210\",\r\n  \"department\": \"CSE\",\r\n  \"year\": 2,\r\n  \"semester\": 4\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/students/search/register-no?registerNo=111425149003",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "students",
+            "search",
+            "register-no"
+          ],
+          "query": [
+            {
+              "key": "registerNo",
+              "value": "111425149003"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
